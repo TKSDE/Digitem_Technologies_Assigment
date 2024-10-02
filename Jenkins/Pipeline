@@ -14,7 +14,14 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git credentialsId: "${GMY}", url: "${REPO_URL}"
+                script {
+                **if (fileExists('.git')) {
+                        sh 'git fetch origin main'
+                        sh 'git reset --hard origin/main'
+                    } else {
+                        git branch: 'main', credentialsId: "${GMY}", url: "${REPO_URL}"
+                    }**
+                }
             }
         }
 
@@ -22,7 +29,7 @@ pipeline {
             steps {
                 script {
                     dir('frontend') {
-                        def frontendApp = docker.build("${FRONTEND_IMAGE}")
+                        frontendApp = docker.build("${FRONTEND_IMAGE}")
                     }
                 }
             }
@@ -32,7 +39,7 @@ pipeline {
             steps {
                 script {
                     dir('fastapi-hello-world') {  // Backend directory
-                        def backendApp = docker.build("${BACKEND_IMAGE}")
+                        backendApp = docker.build("${BACKEND_IMAGE}")
                     }
                 }
             }
