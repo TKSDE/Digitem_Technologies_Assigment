@@ -2,11 +2,11 @@ FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9
 
 WORKDIR /app  # Set the working directory inside the container to /app
 
-COPY requirements.txt .  # Copy the requirements.txt to the container
-RUN pip install --no-cache-dir -r requirements.txt  # Install dependencies from requirements.txt
+COPY requirements.txt .  
+RUN pip install --no-cache-dir -r requirements.txt  
 
-COPY . .  # Copy the rest of the application files into the container
+COPY . .  
 
-EXPOSE 5000  # Expose port 5000 for Uvicorn
+EXPOSE 5000 
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000", "--log-level", "error"]  # Command to run Uvicorn
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000", "--log-level", "error"]  
