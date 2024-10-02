@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+./fastapi-hello-world/__pycache__/*
+./fastapi-hello-world/myenv/*
