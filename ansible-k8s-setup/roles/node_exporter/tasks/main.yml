@@ -1,0 +1,13 @@
+- name: Download Node Exporter
+  get_url:
+    url: https://github.com/prometheus/node_exporter/releases/latest/download/node_exporter-{{ node_exporter_version }}.linux-amd64.tar.gz
+    dest: /tmp/node_exporter.tar.gz
+
+- name: Extract Node Exporter
+  unarchive:
+    src: /tmp/node_exporter.tar.gz
+    dest: /usr/local/bin/
+    remote_src: yes
+
+- name: Start Node Exporter
+  command: nohup /usr/local/bin/node_exporter &

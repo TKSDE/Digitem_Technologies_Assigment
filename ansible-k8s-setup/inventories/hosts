@@ -1,0 +1,7 @@
+[webservers]
+server1 ansible_host=143.244.143.83 ansible_user=root ansible_ssh_pass=DevOps#1Digitem
+server2 ansible_host=143.244.141.228 ansible_user=root ansible_ssh_pass=DevOps#1Digitem
+
+[k8s]
+server1
+server2
