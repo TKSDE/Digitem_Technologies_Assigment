@@ -1,0 +1,73 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKERHUB_USERNAME = 'tksde'  // Aapka Docker Hub username
+        FRONTEND_IMAGE = "${DOCKERHUB_USERNAME}/frontend"
+        BACKEND_IMAGE = "${DOCKERHUB_USERNAME}/backend"
+        KMY = 'ACCESSK'
+        GMY = 'ACCESSG'
+        DMY = 'ACCESSD'
+        REPO_URL = 'https://github.com/TKSDE/Digitem_Technologies_Assigment.git'
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git credentialsId: "${GMY}", url: "${REPO_URL}"
+            }
+        }
+
+        stage('Build Frontend Docker Image') {
+            steps {
+                script {
+                    dir('frontend') {
+                        def frontendApp = docker.build("${FRONTEND_IMAGE}")
+                    }
+                }
+            }
+        }
+
+        stage('Build Backend Docker Image') {
+            steps {
+                script {
+                    dir('fastapi-hello-world') {  // Backend directory
+                        def backendApp = docker.build("${BACKEND_IMAGE}")
+                    }
+                }
+            }
+        }
+
+        stage('Push Frontend Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', "${DMY}") {
+                        frontendApp.push()
+                    }
+                }
+            }
+        }
+
+        stage('Push Backend Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', "${DMY}") {
+                        backendApp.push()
+                    }
+                }
+            }
+        }
+
+        stage('Deploy to K3s') {
+            steps {
+                withCredentials([file(credentialsId: "${KMY}", variable: 'KUBECONFIG')]) {
+                    script {
+                        // Apply Kubernetes deployment files for frontend and backend
+                        sh 'kubectl apply -f frontend/frontend-deployment.yaml'
+                        sh 'kubectl apply -f fastapi-hello-world/backend-deployment.yaml'
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,3 +1,0 @@
-- hosts: webservers
-  roles:
-    - node_exporter
