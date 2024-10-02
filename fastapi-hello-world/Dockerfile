@@ -5,8 +5,8 @@ WORKDIR /app  # Set the working directory inside the container to /app
 COPY requirements.txt .  # Copy the requirements.txt to the container
 RUN pip install --no-cache-dir -r requirements.txt  # Install dependencies from requirements.txt
 
-COPY . .  
+COPY . .  # Copy the rest of the application files into the container
 
-EXPOSE 5000  
+EXPOSE 5000  # Expose port 5000 for Uvicorn
 
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000", "--log-level", "error"]  # Command to run Uvicorn
