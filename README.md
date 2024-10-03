@@ -32,5 +32,21 @@ Run the following commands on both servers to update the Ubuntu packages to the 
 
 ```bash
 sudo apt update -y && sudo apt upgrade -y
+```
 
-### **Step 2: Install Java for Jenkins (on Server 1)**
+### **Step 2 Install Java for Jenkins on Server 1**
+Jenkins requires Java to run. Install Java 21 using the following command:
+
+```bash
+sudo apt install openjdk-21-jdk -y
+```
+verify the Java version:
+```bash
+java -version
+```
+You should see the following output:
+```bash
+
+
+
+
