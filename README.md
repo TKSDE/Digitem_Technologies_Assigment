@@ -128,6 +128,8 @@ sudo kubectl get nodes
 ```
 ### **Step 6: Set Up Kubernetes (K3s) Deployment for Backend**
 
+![Image Description]()
+
 
 ![Project Structure](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/fastapi-hello-world)
 
