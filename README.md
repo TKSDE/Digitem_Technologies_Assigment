@@ -45,9 +45,9 @@ verify the Java version:
 java -version
 ```
 You should see the following output:
-```bash
+
 ![Image Description](https://github.com/TKSDE/Digitem_Technologies_Assigment/blob/main/images/1.png?raw=true)
-```
+
 ### **Step 3: Install Jenkins on Server 1**
 Add the Jenkins GPG key and repository:
 
@@ -108,9 +108,9 @@ sudo kubectl get nodes
 ```
 ### **Step 6: Set Up Kubernetes (K3s) Deployment for Backend**
 Project Backend
-```bash
+
 ![Project Structure](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/fastapi-hello-world)
-```
+
 
 
 
