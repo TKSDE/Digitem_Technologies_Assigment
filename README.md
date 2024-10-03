@@ -46,6 +46,76 @@ java -version
 ```
 You should see the following output:
 ```bash
+![Image Description](https://github.com/TKSDE/Digitem_Technologies_Assigment/blob/main/images/1.png?raw=true)
+```
+### **Step 3: Install Jenkins on Server 1**
+Add the Jenkins GPG key and repository:
+
+```bash
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+```
+Add the Jenkins repository:
+```bash
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+/etc/apt/sources.list.d/jenkins.list > /dev/null
+```
+Update the system again:
+```bash
+sudo apt update -y
+```
+Install Jenkins:
+```bash
+sudo apt install jenkins -y
+```
+Start Jenkins and enable it to start on boot:
+
+```bash
+sudo systemctl start jenkins && sudo systemctl enable jenkins
+```
+Check the status of Jenkins:
+```bash
+sudo systemctl status jenkins
+```
+### **Step 4: Install Docker and Nginx on Server 1**
+Install Docker on Server 1:
+```bash
+sudo apt install docker.io -y
+```
+Start Docker and enable it to run on boot:
+
+```bash
+sudo systemctl start docker && sudo systemctl enable docker
+```
+Install Nginx on Server 1:
+
+```bash
+sudo apt install nginx -y
+```
+Start Nginx and enable it to run on boot:
+
+```bash
+sudo systemctl start nginx && sudo systemctl enable nginx
+```
+### **Step 5: Install Kubernetes (K3s) on Server 1**
+To install K3s on Server 2, execute the following:
+```bash
+curl -sfL https://get.k3s.io | sh -
+```
+Verify that K3s is running:
+
+```bash
+sudo kubectl get nodes
+```
+### **Step 6: Set Up Kubernetes (K3s) Deployment for Backend**
+Project Backend
+```bash
+![Project Structure](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/fastapi-hello-world)
+```
+
+
+
+
+
 
 
 
