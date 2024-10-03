@@ -107,9 +107,20 @@ Verify that K3s is running:
 sudo kubectl get nodes
 ```
 ### **Step 6: Set Up Kubernetes (K3s) Deployment for Backend**
-Project Backend
+
 
 ![Project Structure](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/fastapi-hello-world)
+
+### **Step 7: Set Up Frontend (Static Website)**
+
+![Project Structure](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/frontend)
+
+### **Step 8: Jenkins Pipeline for CI/CD**
+
+![Project Files](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/Jenkins)
+
+
+
 
 
 
