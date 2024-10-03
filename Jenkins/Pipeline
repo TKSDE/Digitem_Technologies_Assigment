@@ -59,7 +59,7 @@ pipeline {
                     """
                     // Restart Nginx service
                     sh """
-                    echo 'your_password' | sudo -S systemctl restart nginx
+                    sudo -S systemctl restart nginx
                     """
                 }
             }
