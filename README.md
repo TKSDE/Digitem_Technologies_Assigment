@@ -128,16 +128,20 @@ sudo kubectl get nodes
 ```
 ### **Step 6: Set Up Kubernetes (K3s) Deployment for Backend**
 
-![Image Description]()
+![Image Description](https://github.com/TKSDE/Digitem_Technologies_Assigment/blob/main/images/2.png)
 
 
 ![Project Structure](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/fastapi-hello-world)
 
 ### **Step 7: Set Up Frontend (Static Website)**
 
+![Image Description](https://github.com/TKSDE/Digitem_Technologies_Assigment/blob/main/images/3.png)
+
 ![Project Structure](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/frontend)
 
 ### **Step 8: Jenkins Pipeline for CI/CD**
+![Image Description](https://github.com/TKSDE/Digitem_Technologies_Assigment/blob/main/images/4.png)
+
 
 ![Project Files](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/Jenkins)
 
@@ -147,7 +151,7 @@ sudo kubectl get nodes
 
 You should see the following output:
 
-![Image Description]()
+![Image Description](https://github.com/TKSDE/Digitem_Technologies_Assigment/blob/main/images/5.png)
 
 
 
