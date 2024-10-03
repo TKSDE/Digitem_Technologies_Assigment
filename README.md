@@ -3,6 +3,25 @@
 ## Overview
 This repository contains the implementation for the **Digitem Technologies Assignment**. The project leverages **Jenkins**, **Nginx**, **Docker**, **Kubernetes (K3s)**, and **GitHub** to automate the entire development, deployment, and monitoring pipeline. It includes both **frontend** and **backend** services, which are containerized using Docker and deployed on Kubernetes.
 
+## Access Information
+
+| **Type**       | **Host**                                                                                      | **Username** | **Password**                                                                   |
+|----------------|-----------------------------------------------------------------------------------------------|--------------|----------------------------------------------------------------------------------|
+| **Jenkins**    | [http://143.244.141.228:8080/](http://143.244.141.228:8080/)                                  | Digitem      | Digitem                                                                          |
+| **Grafana**    | [http://143.244.141.228:30120/](http://143.244.141.228:30120/)                                | admin        | prom-operator                                                                    |
+| **Prometheus** | [http://143.244.141.228:30850/graph?g0.expr=&g0.tab=1&g0.display_mode=lines&g0.show_exemplars=0&g0.range_input=1h](http://143.244.141.228:30850/graph?g0.expr=&g0.tab=1&g0.display_mode=lines&g0.show_exemplars=0&g0.range_input=1h) |              |                                                                                  |
+| **Frontend**   | [http://143.244.141.228:32015/](http://143.244.141.228:32015/)                                |              |                                                                                  |
+| **Backend**    | [http://143.244.141.228:30777/](http://143.244.141.228:30777/)                                |              |                                                                                  |
+
+### User Passwords for Server 1:
+- **Username**: Digitem
+
+### Credentials for Other Services:
+- **GitHub**: ACCESSG
+- **Docker**: ACCESSD
+- **Kubernetes**: ACCESSK
+
+
 ### **Project Structure**
 The project is divided into multiple directories, each responsible for a different part of the system:
 
@@ -119,7 +138,13 @@ sudo kubectl get nodes
 
 ![Project Files](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/Jenkins)
 
+### **Step 9: Monitoring For Servers**
 
+![Project Structure](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/Monitoring)
+
+You should see the following output:
+
+![Image Description]()
 
 
 
