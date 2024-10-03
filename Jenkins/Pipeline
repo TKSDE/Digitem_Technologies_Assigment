@@ -2,25 +2,29 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_USERNAME = 'tksde'  // Aapka Docker Hub username
+        DOCKERHUB_USERNAME = 'tksde'  
         FRONTEND_IMAGE = "${DOCKERHUB_USERNAME}/frontend"
         BACKEND_IMAGE = "${DOCKERHUB_USERNAME}/backend"
         KMY = 'ACCESSK'
         GMY = 'ACCESSG'
         DMY = 'ACCESSD'
         REPO_URL = 'https://github.com/TKSDE/Digitem_Technologies_Assigment.git'
+        SERVER_IP = '143.244.141.228'  
+        SERVER_USER = 'root'  
+        NGINX_CONF_PATH = '/etc/nginx/conf.d/frontend.conf'
+        FRONTEND_STATIC_PATH = '/usr/share/nginx/test/'
     }
 
     stages {
         stage('Clone Repository') {
             steps {
                 script {
-                **if (fileExists('.git')) {
+                    if (fileExists('.git')) {
                         sh 'git fetch origin main'
                         sh 'git reset --hard origin/main'
                     } else {
                         git branch: 'main', credentialsId: "${GMY}", url: "${REPO_URL}"
-                    }**
+                    }
                 }
             }
         }
@@ -29,7 +33,38 @@ pipeline {
             steps {
                 script {
                     dir('frontend') {
+                        // Install dependencies and build frontend
+                        sh 'npm install'
+                        sh 'npm run build'
+                        // Build Docker image for frontend
                         frontendApp = docker.build("${FRONTEND_IMAGE}")
+                        // Push Docker image to Docker Hub
+                        docker.withRegistry('https://registry.hub.docker.com', "${DMY}") {
+                            frontendApp.push()
+                        }
+                    }
+                }
+            }
+        }
+        stage('Deploy Nginx Config and Static Files') {
+            steps {
+                script {
+                    // Copy built frontend files to the server
+                    sh """
+                        scp -r frontend/build/* ${SERVER_USER}@${SERVER_IP}:${FRONTEND_STATIC_PATH}
+                    """
+                    // Transfer Nginx configuration to the server
+                    sh """
+                        scp frontend/nginx/frontend.conf ${SERVER_USER}@${SERVER_IP}:${NGINX_CONF_PATH}
+                    """
+                    // Restart Nginx on the remote server
+                    sh """
+                        ssh ${SERVER_USER}@${SERVER_IP} 'sudo systemctl restart nginx'
+                    """
+                    script {
+                        dir('frontend') {
+                            frontendApp = docker.build("${FRONTEND_IMAGE}")
+                        }
                     }
                 }
             }
@@ -45,15 +80,15 @@ pipeline {
             }
         }
 
-        stage('Push Frontend Docker Image') {
-            steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', "${DMY}") {
-                        frontendApp.push()
-                    }
-                }
-            }
-        }
+        // stage('Push Frontend Docker Image') {
+        //     steps {
+        //         script {
+        //             docker.withRegistry('https://registry.hub.docker.com', "${DMY}") {
+        //                 frontendApp.push()
+        //             }
+        //         }
+        //     }
+        // }
 
         stage('Push Backend Docker Image') {
             steps {
@@ -70,7 +105,7 @@ pipeline {
                 withCredentials([file(credentialsId: "${KMY}", variable: 'KUBECONFIG')]) {
                     script {
                         // Apply Kubernetes deployment files for frontend and backend
-                        sh 'kubectl apply -f frontend/frontend-deployment.yaml'
+                        sh 'kubectl apply -f frontend/frontened-deployment.yaml'  // Fixed typo in frontend-deployment.yaml path
                         sh 'kubectl apply -f fastapi-hello-world/backend-deployment.yaml'
                     }
                 }
