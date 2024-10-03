@@ -49,26 +49,39 @@ pipeline {
         stage('Deploy Nginx Config and Static Files') {
             steps {
                 script {
-                    // Copy built frontend files to the server
+                    // Copy built frontend files to the static directory directly
                     sh """
-                        scp -r frontend/build/* ${SERVER_USER}@${SERVER_IP}:${FRONTEND_STATIC_PATH}
+                        cp -r frontend/build/* ${FRONTEND_STATIC_PATH}
                     """
-                    // Transfer Nginx configuration to the server
+                    // Copy Nginx configuration to the proper path
                     sh """
-                        scp frontend/nginx/frontend.conf ${SERVER_USER}@${SERVER_IP}:${NGINX_CONF_PATH}
+                        cp frontend/nginx/frontend.conf ${NGINX_CONF_PATH}
                     """
-                    // Restart Nginx on the remote server
+                    // Restart Nginx service
                     sh """
-                        ssh ${SERVER_USER}@${SERVER_IP} 'sudo systemctl restart nginx'
+                    echo 'your_password' | sudo -S systemctl restart nginx
                     """
-                    script {
-                        dir('frontend') {
-                            frontendApp = docker.build("${FRONTEND_IMAGE}")
-                        }
-                    }
                 }
             }
         }
+        // stage('Deploy Nginx Config and Static Files') {
+        //     steps {
+        //         script {
+        //             // Copy built frontend files to the server with host key checking disabled
+        //             sh """
+        //                 scp -o StrictHostKeyChecking=no -r frontend/build/* ${SERVER_USER}@${SERVER_IP}:${FRONTEND_STATIC_PATH}
+        //             """
+        //             // Transfer Nginx configuration to the server with host key checking disabled
+        //             sh """
+        //                 scp -o StrictHostKeyChecking=no frontend/nginx/frontend.conf ${SERVER_USER}@${SERVER_IP}:${NGINX_CONF_PATH}
+        //             """
+        //             // Restart Nginx on the remote server with host key checking disabled
+        //             sh """
+        //                 ssh -o StrictHostKeyChecking=no ${SERVER_USER}@${SERVER_IP} 'sudo systemctl restart nginx'
+        //             """
+        //         }
+        //     }
+        // }
 
         stage('Build Backend Docker Image') {
             steps {
@@ -105,7 +118,7 @@ pipeline {
                 withCredentials([file(credentialsId: "${KMY}", variable: 'KUBECONFIG')]) {
                     script {
                         // Apply Kubernetes deployment files for frontend and backend
-                        sh 'kubectl apply -f frontend/frontened-deployment.yaml'  // Fixed typo in frontend-deployment.yaml path
+                        sh 'kubectl apply -f frontend/frontened-deployment.yaml'  
                         sh 'kubectl apply -f fastapi-hello-world/backend-deployment.yaml'
                     }
                 }
