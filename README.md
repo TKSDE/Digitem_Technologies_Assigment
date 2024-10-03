@@ -160,3 +160,9 @@ You can view the project files in this folder:
 You can view the project structure and code for monitoring in this folder:  
 [Project Structure (Monitoring)](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/Monitoring)
 
+---
+
+## Author
+
+**Tek Chand Sharma**  
+2024
