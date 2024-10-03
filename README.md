@@ -133,33 +133,30 @@ sudo kubectl get nodes
 You can view the project structure and code in this folder:  
 [Project Structure (FastAPI Hello World)](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/fastapi-hello-world)
 
+---
+
 ### **Step 7: Set Up Frontend (Static Website)**
 
 ![Image Description](https://github.com/TKSDE/Digitem_Technologies_Assigment/blob/main/images/3.png)
 
-![Project Structure](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/frontend)
+You can view the project structure and code in this folder:  
+[Project Structure (Frontend)](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/frontend)
+
+---
 
 ### **Step 8: Jenkins Pipeline for CI/CD**
+
 ![Image Description](https://github.com/TKSDE/Digitem_Technologies_Assigment/blob/main/images/4.png)
 
+You can view the project files in this folder:  
+[Project Files (Jenkins)](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/Jenkins)
 
-![Project Files](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/Jenkins)
+---
 
 ### **Step 9: Monitoring For Servers**
 
-![Project Structure](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/Monitoring)
-
-You should see the following output:
-
 ![Image Description](https://github.com/TKSDE/Digitem_Technologies_Assigment/blob/main/images/5.png)
 
-
-
-
-
-
-
-
-
-
+You can view the project structure and code for monitoring in this folder:  
+[Project Structure (Monitoring)](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/Monitoring)
 
