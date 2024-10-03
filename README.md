@@ -162,7 +162,15 @@ You can view the project structure and code for monitoring in this folder:
 
 ---
 
+---
+
+<div align="center">
+
 ## Author
 
 **Tek Chand Sharma**  
 2024
+
+</div>
+
+---
