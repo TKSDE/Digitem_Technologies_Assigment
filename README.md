@@ -7,14 +7,15 @@ This repository contains the implementation for the **Digitem Technologies Assig
 
 | **Type**       | **Host**                                                                                      | **Username** | **Password**                                                                   |
 |----------------|-----------------------------------------------------------------------------------------------|--------------|----------------------------------------------------------------------------------|
-| **Jenkins**    | [http://143.244.141.228:8080/](http://143.244.141.228:8080/)                                  | Digitem      | Digitem                                                                          |
+| **Jenkins**    | [http://143.244.141.228:8080/](http://143.244.141.228:8080/)                                  | sharing personally      | Digitem                                                                          |
 | **Grafana**    | [http://143.244.141.228:30120/](http://143.244.141.228:30120/)                                | admin        | prom-operator                                                                    |
 | **Prometheus** | [http://143.244.141.228:30850/graph?g0.expr=&g0.tab=1&g0.display_mode=lines&g0.show_exemplars=0&g0.range_input=1h](http://143.244.141.228:30850/graph?g0.expr=&g0.tab=1&g0.display_mode=lines&g0.show_exemplars=0&g0.range_input=1h) |              |                                                                                  |
 | **Frontend**   | [http://143.244.141.228:32015/](http://143.244.141.228:32015/)                                |              |                                                                                  |
 | **Backend**    | [http://143.244.141.228:30777/](http://143.244.141.228:30777/)                                |              |                                                                                  |
 
 ### User Passwords for Server 1:
-- **Username**: Digitem
+- **Username**: root
+- **Passwd**: sharing personally
 
 ### Credentials for Other Services:
 - **GitHub**: ACCESSG
