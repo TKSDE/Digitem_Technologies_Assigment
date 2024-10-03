@@ -130,8 +130,8 @@ sudo kubectl get nodes
 
 ![Image Description](https://github.com/TKSDE/Digitem_Technologies_Assigment/blob/main/images/2.png)
 
-
-![Project Structure](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/fastapi-hello-world)
+You can view the project structure and code in this folder:  
+[Project Structure (FastAPI Hello World)](https://github.com/TKSDE/Digitem_Technologies_Assigment/tree/main/fastapi-hello-world)
 
 ### **Step 7: Set Up Frontend (Static Website)**
 
